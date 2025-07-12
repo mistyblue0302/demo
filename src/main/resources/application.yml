@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul
+    username: root
+    password: demo1215
+
+  jpa:
+    # 쿼리문 보여주기
+    show-sql: true
+    # Hibernate가 사용할 데이터베이스 방언
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    # DB의 고유 기능 사용 가능
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8080
