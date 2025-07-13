@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -65,5 +66,11 @@ public class PostController {
         @Parameter(description = "삭제할 게시글 id", example = "1")
         @PathVariable Long id) {
         postService.delete(id);
+    }
+
+    @Operation(summary = "제목으로 게시글 검색", description = "제목에 특정 키워드가 포함된 게시글을 검색합니다.")
+    @GetMapping("/search")
+    public List<Post> searchByTitle(@RequestParam String keyword) {
+        return postService.searchPostsByTitle(keyword);
     }
 }

@@ -18,6 +18,10 @@ public class PostService {
 
     private final PostRepository postRepository;
 
+    public List<Post> searchPostsByTitle(String keyword) {
+        return postRepository.findByTitleContains(keyword);
+    }
+
     public Post create(PostDto postDto) {
         Post post = postRepository.save(postDto.toEntity());
         return post;
